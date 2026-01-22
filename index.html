@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPOC - STOC Advisory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: #f0f0f0;
+        }
+        
+        .page {
+            background: white;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 50px 60px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            min-height: 850px;
+            page-break-after: always;
+        }
+        
+        .header-badge {
+            background: linear-gradient(90deg, #6B4FA0 0%, #8B6FC0 100%);
+            color: white;
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        
+        .logo-section {
+            margin-bottom: 10px;
+        }
+        
+        .stoc-logo {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stoc-blue {
+            color: #2E4A7E;
+        }
+        
+        .stoc-light {
+            color: #5B8CCA;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 0.95em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 3px solid #3a7dba;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .section-header {
+            background: #3a7dba;
+            color: white;
+            padding: 10px 20px;
+            margin: 25px 0 20px 0;
+            font-size: 0.95em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .overview-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            margin: 25px 0;
+        }
+        
+        .text-block p {
+            margin-bottom: 15px;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+        
+        .map-container {
+            position: relative;
+            text-align: center;
+        }
+        
+        .us-map {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 20px 10px;
+            background: #f8f9fa;
+            border-top: 4px solid #3a7dba;
+        }
+        
+        .stat-number {
+            font-size: 2.2em;
+            color: #3a7dba;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.85em;
+            color: #666;
+            line-height: 1.3;
+        }
+        
+        .insights-header {
+            color: #3a7dba;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 20px 0 15px 0;
+        }
+        
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .deliverable-card {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .number-circle {
+            background: #5B8CCA;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.3em;
+            flex-shrink: 0;
+        }
+        
+        .deliverable-content h4 {
+            color: #3a7dba;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .deliverable-content p {
+            font-size: 0.85em;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        .two-service-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 25px 0;
+        }
+        
+        .service-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #6fa3d0;
+        }
+        
+        .service-icon-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .service-icon {
+            font-size: 2.5em;
+        }
+        
+        .service-title {
+            color: #3a7dba;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .service-content p {
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .service-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .service-list li {
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+            line-height: 1.5;
+            position: relative;
+        }
+        
+        .service-list li::before {
+            content: '✓';
+            color: #5B8CCA;
+            font-weight: 600;
+            position: absolute;
+            left: 0;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .metric-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #6fa3d0;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            color: #3a7dba;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            font-size: 0.85em;
+            color: #666;
+            line-height: 1.3;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        @media print {
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+            <div style="width: 200px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <img src="stoc-logo.png" alt="STOC Advisory" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+            <div style="width: 200px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <img src="bpoc-logo.png" alt="BPOC" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="header-badge">BPOC</div>
+        
+        <div class="logo-section">
+            <div class="stoc-logo">
+                <span class="stoc-blue">STOC</span><span class="stoc-light">ADVISORY</span>
+            </div>
+            <div class="tagline">TRANSACTION ADVISORY | GROWTH ENABLEMENT | CORPORATE DEVELOPMENT | CFO ADVISORY</div>
+        </div>
+        
+        <div style="background: #f8f9fa; border-left: 5px solid #3a7dba; padding: 25px; margin: 20px 0;">
+            <div style="font-size: 1.05em; line-height: 1.7; color: #444;">
+                STOC Advisory is a specialist transaction and growth enablement firm serving healthcare-focused PE firms executing multi-platform buy-and-build strategies. As a platform-literate, operator-aware partner, we combine AI-driven research, accelerated diligence, and hands-on operational support to improve speed, confidence, and scalability across healthcare deals.
+            </div>
+        </div>
+        
+        <div class="section-header">YOUR PORTFOLIO, OUR METHODOLOGY</div>
+        
+        <div class="overview-layout">
+            <div class="text-block">
+                <div style="background: #f8f9fa; border-left: 5px solid #6fa3d0; padding: 25px; margin-bottom: 20px;">
+                    <div style="font-size: 1em; line-height: 1.6; color: #444;">
+                        BPOC's portfolio spans 16 active platforms across Providers, Outsourced Services, Products & Distribution, and Pharmacy & Pharma Services. STOC's integrated services—Transaction Advisory (TAS), Corporate Development Support (CDS), Growth Enablement (GES), and CFO Advisory—provide healthcare-specific intelligence and repeatable frameworks designed for pure-play healthcare buy-and-build execution.
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                    <div style="border-left: 4px solid #3a7dba; padding-left: 15px;">
+                        <div style="font-weight: 600; color: #3a7dba; margin-bottom: 5px;">DEAL ENABLEMENT</div>
+                        <div style="font-size: 0.9em;">AI-accelerated diligence and healthcare-specific sourcing</div>
+                    </div>
+                    <div style="border-left: 4px solid #6fa3d0; padding-left: 15px;">
+                        <div style="font-weight: 600; color: #3a7dba; margin-bottom: 5px;">GROWTH SUPPORT</div>
+                        <div style="font-size: 0.9em;">Post-close KPI tracking and operational enablement</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <img src="1769107333729_image.png" alt="STOC Advisory Locations" class="us-map" style="width: 100%; max-width: 450px; margin: 0 auto; display: block;"/>
+                <div style="margin-top: 20px; font-size: 0.85em; line-height: 1.6; color: #555; font-style: italic; text-align: center; padding: 0 10px;">
+                    Global team of 30+ professionals throughout the country with primary offices in Baltimore, MD and Edina, MN. Additional personnel is located remotely throughout the country.
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats-row">
+            <div class="stat-box">
+                <span class="stat-number">200+</span>
+                <span class="stat-label">Transactions Across<br>All Sectors</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">75+</span>
+                <span class="stat-label">Healthcare Portfolio<br>Companies</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">AI-Driven</span>
+                <span class="stat-label">Healthcare Data<br>Intelligence</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">3-4 Weeks</span>
+                <span class="stat-label">Accelerated QoE<br>Turnaround</span>
+            </div>
+        </div>
+        
+        <div class="section-header">CORE CAPABILITIES</div>
+        
+        <div class="deliverables-grid">
+            <div class="deliverable-card">
+                <div class="number-circle">1</div>
+                <div class="deliverable-content">
+                    <h4>Healthcare Market Intelligence</h4>
+                    <p>Web scraping and AI-powered data enrichment identify healthcare targets before traditional intermediaries. External validation of payor mix, referral networks, and competitive positioning across healthcare sectors.</p>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="number-circle">2</div>
+                <div class="deliverable-content">
+                    <h4>AI-Accelerated Diligence</h4>
+                    <p>Machine learning automation for EBITDA normalization, working capital trending, and revenue quality assessment specific to healthcare reimbursement models—reducing diligence timelines from 6-8 weeks to 3-4 weeks.</p>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="number-circle">3</div>
+                <div class="deliverable-content">
+                    <h4>Healthcare Platform Expertise</h4>
+                    <p>Deep understanding of provider networks, outsourced services scalability, product distribution channels, and pharmacy/pharma services complexity. We speak the language of healthcare operators and understand regulatory nuances.</p>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="number-circle">4</div>
+                <div class="deliverable-content">
+                    <h4>Sector-Specific Experience</h4>
+                    <p>75+ healthcare transactions across Providers (PT, dental, primary care), Outsourced Services (staffing, benefits), Products & Distribution (DME, med-tech), and Pharmacy & Pharma Services (clinical research, packaging).</p>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="number-circle">5</div>
+                <div class="deliverable-content">
+                    <h4>Repeatable Methodology</h4>
+                    <p>Standardized screening criteria, healthcare-specific diligence templates, and integration frameworks enable consistent execution across multiple platforms and simultaneous add-on acquisitions.</p>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="number-circle">6</div>
+                <div class="deliverable-content">
+                    <h4>Regulatory & Compliance Focus</h4>
+                    <p>Assessment of HIPAA compliance, payor contracting, clinical quality metrics, and healthcare regulatory risks—not just financial metrics but operational sustainability for healthcare platform strategies.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header">PE PARTNERSHIP METRICS</div>
+        
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-value">42</span>
+                <span class="metric-label">Platform Companies<br>Supported</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">128</span>
+                <span class="metric-label">Add-On Transactions<br>Completed</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">89%</span>
+                <span class="metric-label">Repeat Engagement<br>Rate (Tier 1)</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">18</span>
+                <span class="metric-label">Active PE Fund<br>Relationships</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">3.8 Weeks</span>
+                <span class="metric-label">Average QoE<br>Delivery Time</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">$15-150M</span>
+                <span class="metric-label">Typical Deal<br>Value Range</span>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <strong>info@stocadvisory.com</strong><br><strong>Michael O'Heir:</strong> moheir@stocadvisory.com
+        </div>
+    </div>
+    
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+            <div style="width: 200px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <img src="stoc-logo.png" alt="STOC Advisory" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+            <div style="width: 200px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                <img src="bpoc-logo.png" alt="BPOC" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="header-badge">BPOC</div>
+        
+        <div class="logo-section">
+            <div class="stoc-logo">
+                <span class="stoc-blue">STOC</span><span class="stoc-light">ADVISORY</span>
+            </div>
+            <div class="tagline">TRANSACTION ADVISORY | GROWTH ENABLEMENT | CORPORATE DEVELOPMENT | CFO ADVISORY</div>
+        </div>
+        
+        <div class="section-header">SERVICE OVERVIEW</div>
+        
+        <div style="background: #f8f9fa; border-left: 5px solid #3a7dba; padding: 20px; margin: 20px 0;">
+            <div style="font-size: 0.95em; line-height: 1.7; color: #444;">
+                Our integrated service platform supports healthcare-focused PE firms from deal sourcing through post-close value creation. Transaction Advisory Services (TAS) and Corporate Development Support (CDS) enable accelerated deal execution, while Growth Enablement Services (GES) and CFO Advisory drive operational performance. All services leverage healthcare-specific intelligence and standardized processes designed for pure-play healthcare portfolios.
+            </div>
+        </div>
+        
+        <div class="section-header">COMMERCIAL SUPPORT SYSTEM</div>
+        
+        <div style="background: #f8f9fa; padding: 30px; margin: 20px 0; border-left: 5px solid #3a7dba;">
+            <div style="font-size: 1.1em; font-weight: 600; color: #3a7dba; margin-bottom: 15px;">
+                Driving Repeatable Deal Flow Influence in Healthcare
+            </div>
+            <div style="font-size: 0.95em; line-height: 1.8; color: #444; margin-bottom: 15px;">
+                STOC's marketing and content function exists to drive repeatable deal flow influence, not brand awareness in isolation. We position ourselves as a specialist transaction and growth enablement firm—a platform-literate, operator-aware partner with deep healthcare expertise that improves speed, confidence, and scalability across deals.
+            </div>
+            <div style="font-size: 0.9em; line-height: 1.7; color: #555;">
+                <strong>Our marketing supports:</strong> BD conversations with healthcare PE sponsors and operators | Credibility reinforcement with healthcare investment bankers | Cross-sell and service expansion opportunities | Pipeline influence measurement and optimization
+            </div>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin: 30px 0;">
+            <div style="text-align: center; padding: 25px; background: #f8f9fa; border-radius: 8px;">
+                <div style="font-size: 2.5em; margin-bottom: 10px;">🎯</div>
+                <div style="font-weight: 600; color: #3a7dba; margin-bottom: 8px; font-size: 1em;">FIT</div>
+                <div style="font-size: 0.85em; color: #555; line-height: 1.6;">Strategic alignment with healthcare platform thesis</div>
+            </div>
+            <div style="text-align: center; padding: 25px; background: #f8f9fa; border-radius: 8px;">
+                <div style="font-size: 2.5em; margin-bottom: 10px;">📊</div>
+                <div style="font-weight: 600; color: #3a7dba; margin-bottom: 8px; font-size: 1em;">FINANCIALS</div>
+                <div style="font-size: 0.85em; color: #555; line-height: 1.6;">Rigorous QoE and healthcare-specific assessment</div>
+            </div>
+            <div style="text-align: center; padding: 25px; background: #f8f9fa; border-radius: 8px;">
+                <div style="font-size: 2.5em; margin-bottom: 10px;">📈</div>
+                <div style="font-weight: 600; color: #3a7dba; margin-bottom: 8px; font-size: 1em;">OPPORTUNITY</div>
+                <div style="font-size: 0.85em; color: #555; line-height: 1.6;">Growth potential and synergy capture</div>
+            </div>
+        </div>
+        
+        <div class="section-header">INTEGRATED SERVICE PLATFORM</div>
+        
+        <div class="two-service-layout">
+            <div class="service-section">
+                <div class="service-icon-header">
+                    <div class="service-icon">🔍</div>
+                    <div class="service-title">Transaction Advisory<br>Services (TAS)</div>
+                </div>
+                <div class="service-content">
+                    <p style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 0.95em;">
+                        Quality of Earnings | Working Capital | Revenue Assessment
+                    </p>
+                    <p style="font-size: 0.85em; line-height: 1.6; margin-bottom: 15px; color: #555;">
+                        Buy-side financial diligence combining machine learning automation with healthcare sector expertise.
+                    </p>
+                    <ul class="service-list">
+                        <li>AI-accelerated EBITDA normalization and trend detection</li>
+                        <li>Healthcare-specific revenue quality assessment and payor analysis</li>
+                        <li>External data corroboration of clinical volumes and market position</li>
+                        <li>Working capital trending and target NWC calculation</li>
+                        <li>Regulatory compliance and reimbursement risk assessment</li>
+                        <li>3-4 week turnaround for lower middle market healthcare deals</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-section">
+                <div class="service-icon-header">
+                    <div class="service-icon">🎯</div>
+                    <div class="service-title">Corporate Development<br>Support (CDS)</div>
+                </div>
+                <div class="service-content">
+                    <p style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 0.95em;">
+                        Market Mapping | Target Identification | Pipeline Management
+                    </p>
+                    <p style="font-size: 0.85em; line-height: 1.6; margin-bottom: 15px; color: #555;">
+                        Scalable deal sourcing in healthcare using proprietary research and CRM-integrated workflows.
+                    </p>
+                    <ul class="service-list">
+                        <li>Healthcare-specific proprietary research and target identification</li>
+                        <li>External data validation of clinical volumes and network positioning</li>
+                        <li>Sub-sector pipeline development (providers, outsourced, pharma)</li>
+                        <li>CRM integration provides real-time visibility into deal flow</li>
+                        <li>Pre-LOI coordination and preliminary diligence support</li>
+                        <li>Repeatable methodology across healthcare platform strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="two-service-layout" style="margin-top: 20px;">
+            <div class="service-section" style="border-left: 5px solid #3a7dba;">
+                <div class="service-icon-header">
+                    <div class="service-icon">📈</div>
+                    <div class="service-title">Growth Enablement<br>Services (GES)</div>
+                </div>
+                <div class="service-content">
+                    <p style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 0.95em;">
+                        KPI Tracking | Performance Dashboards | Operational Support
+                    </p>
+                    <p style="font-size: 0.85em; line-height: 1.6; margin-bottom: 15px; color: #555;">
+                        Post-close support to accelerate value creation and healthcare platform performance.
+                    </p>
+                    <ul class="service-list">
+                        <li>Real-time healthcare KPI tracking and performance dashboards</li>
+                        <li>Clinical volume growth and referral network development</li>
+                        <li>Operational efficiency improvement initiatives</li>
+                        <li>Integration planning and execution support</li>
+                        <li>AI-driven workflow automation and process optimization</li>
+                        <li>Hands-on enablement with healthcare operator perspective</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-section" style="border-left: 5px solid #3a7dba;">
+                <div class="service-icon-header">
+                    <div class="service-icon">💼</div>
+                    <div class="service-title">CFO Advisory</div>
+                </div>
+                <div class="service-content">
+                    <p style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 0.95em;">
+                        Financial Leadership | Operations Optimization | Value Maximization
+                    </p>
+                    <p style="font-size: 0.85em; line-height: 1.6; margin-bottom: 15px; color: #555;">
+                        Strategic financial support for healthcare portfolio companies at critical inflection points.
+                    </p>
+                    <ul class="service-list">
+                        <li>Interim and fractional CFO services for healthcare companies</li>
+                        <li>Healthcare-specific financial systems and reporting</li>
+                        <li>Budgeting, forecasting, and scenario modeling</li>
+                        <li>Payor contracting and reimbursement optimization</li>
+                        <li>M&A integration and healthcare carve-out support</li>
+                        <li>Board-ready financial reporting and analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section-header">HEALTHCARE SECTOR FOCUS</div>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 20px 0;">
+            <div style="background: #f8f9fa; border-left: 5px solid #3a7dba; padding: 20px;">
+                <div style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 1em;">Providers</div>
+                <div style="font-size: 0.85em; color: #555; line-height: 1.6;">Physical therapy, orthodontics, dental practices, primary care networks, and specialty provider groups</div>
+            </div>
+            <div style="background: #f8f9fa; border-left: 5px solid #6fa3d0; padding: 20px;">
+                <div style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 1em;">Outsourced Services</div>
+                <div style="font-size: 0.85em; color: #555; line-height: 1.6;">Healthcare staffing, benefit technologies, consulting services, and revenue cycle management</div>
+            </div>
+            <div style="background: #f8f9fa; border-left: 5px solid #6fa3d0; padding: 20px;">
+                <div style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 1em;">Products & Distribution</div>
+                <div style="font-size: 0.85em; color: #555; line-height: 1.6;">DME distribution, medical products engineering, and healthcare equipment manufacturing</div>
+            </div>
+            <div style="background: #f8f9fa; border-left: 5px solid #3a7dba; padding: 20px;">
+                <div style="font-weight: 600; color: #3a7dba; margin-bottom: 10px; font-size: 1em;">Pharmacy & Pharma Services</div>
+                <div style="font-size: 0.85em; color: #555; line-height: 1.6;">Clinical research, pharmacy networks, pharmaceutical packaging, and specialty pharmacy services</div>
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; border-left: 5px solid #3a7dba; padding: 20px; margin: 30px 0;">
+            <div style="font-size: 0.9em; line-height: 1.7; color: #444;">
+                <strong>BPOC Portfolio Context:</strong> Alliance Physical Therapy Partners, Atlas Clinical Research, Bond Orthodontic Partners, Bridgeway Benefit Technologies, ClareMedica Health Partners, D4C Dental Brands, Health Management Associates, Home Care Delivered, Medical Solutions, Medicus Healthcare Solutions, Midwest Products and Engineering, Network Partners Group, Praxis Packaging Solutions, Southeast Primary Care Partners, VytlOne (fka Maxor National Pharmacy), and Zenith American Solutions. With 25+ years of pure-play healthcare investing experience and $2.2B in capital commitments across 6 funds, BPOC represents one of the longest-tenured healthcare PE firms. STOC's healthcare sector expertise and repeatable methodology enable simultaneous support across BPOC's portfolio while maintaining deep knowledge of regulatory nuances, payor dynamics, and clinical operations.
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div style="font-weight: 600; margin-bottom: 10px;">STOC Advisory</div>
+            <div class="contact-row">
+                <span>Baltimore, MD</span>
+                <span>|</span>
+                <span>Edina, MN</span>
+                <span>|</span>
+                <span>Nashville, TN</span>
+                <span>|</span>
+                <span>Dallas, TX</span>
+            </div>
+            <div style="margin-top: 10px;">
+                <strong>www.stocadvisory.com</strong>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
